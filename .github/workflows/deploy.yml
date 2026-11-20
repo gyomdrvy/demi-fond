@@ -1,0 +1,50 @@
+
+name: Publier EPS Regularite
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Recuperer les fichiers
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Installer les dependances
+        run: npm install
+
+      - name: Compiler l'application
+        run: npm run build
+
+      - name: Preparer GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Envoyer les fichiers compiles
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Publier l'application
+        id: deployment
+        uses: actions/deploy-pages@v4
