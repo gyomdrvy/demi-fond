@@ -24,3 +24,5 @@ nav{background:#ffffffd9;border:1px solid #d5e7f6}nav button.active{background:#
 .race-tabs button.selected{background:#174b85}.clock>strong{color:#174b85}.progress div{background:linear-gradient(90deg,#12a7a6,#36cfa5)}
 button:not(nav button,.race-tabs button,.point,.undo,.iconbtn,.toggle button){background:#087e91}
 @media(max-width:650px){header{margin:0 -10px 12px;padding:14px 12px}.pedagogy{padding:13px}}
+
+.eval-editor select{min-width:110px}.eval-dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px}.eval-manual{display:block;color:#ad6424}.eval-total{font-size:1.7rem;color:#0f9eaa}.eval-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.eval-editor textarea{display:block;width:100%;margin-top:8px;padding:12px;border:1px solid #a9bdce;border-radius:10px;font:inherit}.eval-editor td{vertical-align:middle}@media print{header,nav,.eval-actions,.upload,button{display:none!important}.panel{box-shadow:none!important}}
