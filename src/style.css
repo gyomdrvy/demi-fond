@@ -46,3 +46,28 @@ button:not(nav button,.race-tabs button,.point,.undo,.iconbtn,.toggle button){ba
 .student-navigation{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}.sort-label{display:flex;align-items:center;gap:7px;font-size:13px}.sort-label select{max-width:230px}.student-group-first td{border-top:3px solid #8da7c5}.combined-summary{margin:18px 0;padding:16px;background:#eaf5ff;border-radius:14px}.combined-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}.combined-stats>div{background:#fff;border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:6px}.combined-stats strong{font-size:18px;color:#153b66}.combined-stats small{font-size:12px;color:#60758a}
 @media print{ @page{size:A4 landscape;margin:9mm}body{background:white!important;color:black!important}header,nav,footer,.eval-actions,.student-navigation,.upload,.eval-report-link,.eval-editor button,.collective-table button,.eval-editor textarea,.eval-editor select,.panel:has(>label),.bareme-page{display:none!important} .app main{padding:0!important;max-width:none!important}.collective-panel,.eval-editor{box-shadow:none!important;border:0!important;padding:0!important}.print-class .eval-editor,.print-class .eval-embedded-report{display:none!important}.print-student .collective-panel,.print-student .eval-embedded-report{display:none!important}.print-student .eval-editor{display:block!important;page-break-inside:avoid}.print-student .eval-editor table{font-size:10px}.print-student .eval-editor select{display:inline!important}.print-student .eval-editor .eval-actions{display:none!important}.print-class .collective-table{font-size:9px;width:100%}.print-class .collective-table td,.print-class .collective-table th{padding:5px!important}.print-class .collective-panel .heading{margin-bottom:8px!important}.print-class .collective-panel p.muted{font-size:9px}.print-class .collective-panel table{page-break-inside:auto}.print-class .collective-panel tr{page-break-inside:avoid}}
 @page studentPortrait{size:A4 portrait;margin:12mm}@media print{.print-student .eval-editor{page:studentPortrait}.print-student .eval-editor .eval-measure{font-size:10px}.print-student .eval-editor td{padding:7px!important}}
+
+/* V15 : identité et impression individuelle en série */
+.brand .logo{overflow:hidden;padding:0!important;background:transparent!important}.brand .logo img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block}.technical-details h3{margin-top:22px;color:#174f70}.technical-details .velocity-chart{max-width:850px;margin:15px auto}.technical-details .tablewrap{margin:14px 0}.print-all-students{display:none}
+@media print{
+  .app.print-student main,.print-student header,.print-student nav,.print-student footer{display:none!important}
+  .print-student .print-all-students{display:block!important}
+  .print-student .print-student-sheet{page-break-after:always;break-after:page;page-break-inside:avoid;break-inside:avoid;padding:0;margin:0;color:#142b3c;background:white;}
+  .print-student .print-student-sheet:last-child{page-break-after:auto;break-after:auto}
+  .print-student .print-sheet-header{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #187b91;padding-bottom:12px;margin-bottom:14px}
+  .print-student .print-sheet-header h1{font-size:17px;color:#16788e;margin:0 0 7px}
+  .print-student .print-sheet-header h2{font-size:23px;margin:0 0 5px}
+  .print-student .print-sheet-header p{font-size:11px;margin:0}
+  .print-student .print-score{font-size:23px;font-weight:800;color:#176c88}
+  .print-student .print-student-sheet h3{font-size:14px;margin:15px 0}
+  .print-student .print-student-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:10.5px}
+  .print-student .print-student-table th,.print-student .print-student-table td{border:1px solid #cbdbe2;padding:10px 8px;vertical-align:top;overflow-wrap:anywhere;line-height:1.45}
+  .print-student .print-student-table th{background:#e7f3f6!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .print-student .print-student-table th:nth-child(1){width:25%}.print-student .print-student-table th:nth-child(2){width:60%}.print-student .print-student-table th:nth-child(3){width:15%}
+  .print-student .print-grade{text-align:center;font-weight:800;white-space:nowrap}
+  .print-student .print-comment{border:1px solid #d5e4e8;border-radius:8px;padding:12px;margin-top:18px;font-size:11px}
+  .print-student .print-comment p{margin:6px 0 0}.print-student .print-status{margin-top:15px;font-size:10px;color:#4a6574}
+}
+@page{size:A4 landscape;margin:9mm}
+@page studentPortrait{size:A4 portrait;margin:12mm}
+@media print{.print-student .print-student-sheet{page:studentPortrait}}
