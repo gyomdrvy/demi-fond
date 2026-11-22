@@ -1,21 +1,21 @@
+
 {
   "name": "Demi-fond Troisième",
   "short_name": "Demi-fond 3e",
-  "id": "./",
-  "start_url": "./",
-  "scope": "./",
+  "id": "/demi-fond/",
+  "start_url": "/demi-fond/",
+  "scope": "/demi-fond/",
   "display": "standalone",
   "background_color": "#10243b",
   "theme_color": "#10243b",
   "icons": [
     {
-      "src": "./icon-192.png",
+      "src": "/demi-fond/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
-      "src": "./icon-512.png",
+      "src": "/demi-fond/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
