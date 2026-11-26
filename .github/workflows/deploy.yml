@@ -17,11 +17,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Recuperer les fichiers
@@ -47,18 +44,13 @@ jobs:
           name: github-pages
           path: ./dist
 
-      - name: Attendre la disponibilite du fichier de publication
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          for i in $(seq 1 12); do
-            count=$(gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts" --jq '[.artifacts[] | select(.name == "github-pages" and .expired == false)] | length')
-            if [ "$count" -gt 0 ] 2>/dev/null; then exit 0; fi
-            sleep 10
-          done
-          echo 'Artifact github-pages introuvable apres attente.'
-          exit 1
-
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Publier l'application
         id: deployment
         uses: actions/deploy-pages@v4
