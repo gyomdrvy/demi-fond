@@ -1,5 +1,5 @@
 
-name: Publier EPS Regularite
+name: Publier Demi-fond Troisieme
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -43,7 +44,20 @@ jobs:
       - name: Envoyer les fichiers compiles
         uses: actions/upload-pages-artifact@v3
         with:
+          name: github-pages
           path: ./dist
+
+      - name: Attendre la disponibilite du fichier de publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 12); do
+            count=$(gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts" --jq '[.artifacts[] | select(.name == "github-pages" and .expired == false)] | length')
+            if [ "$count" -gt 0 ] 2>/dev/null; then exit 0; fi
+            sleep 10
+          done
+          echo 'Artifact github-pages introuvable apres attente.'
+          exit 1
 
       - name: Publier l'application
         id: deployment
